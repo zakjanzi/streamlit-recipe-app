@@ -1,0 +1,12 @@
+- installed streamlit using venv and added a requirements.txt file
+- created hello world app
+- implemented the API
+- created app logic. Ready to deploy.
+
+Will send you the API key via DM. (in case you need it)
+
+
+General notes:
+- Faced issue with markdown
+- Faced issue with presenting the data in a table
+- Faced some issues understanding the API documentation
