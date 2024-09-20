@@ -36,8 +36,6 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_IP }} << 'EOF'
           sudo apt update
           sudo apt upgrade -y
-          sudo apt install python3 python3-venv -y
-          git clone https://github.com/zakjanzi/streamlit-recipe-app.git
           cd streamlit-recipe-app
           python3 -m venv streamlit_env
           source streamlit_env/bin/activate
