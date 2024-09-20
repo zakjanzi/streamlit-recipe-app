@@ -37,8 +37,8 @@ jobs:
         mkdir ~/.ssh
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        chown ubuntu:ubuntu ~/.ssh
-        chown ubuntu:ubuntu ~/.ssh/id_rsa
+      # chown ubuntu:ubuntu ~/.ssh
+      # chown ubuntu:ubuntu ~/.ssh/id_rsa
         
     - name: SSH into server and setup environment
       run: |
@@ -60,4 +60,6 @@ jobs:
 
 # Questions:
 # 1. Should I include the pip installation in the job or is it available by default in Github's CI server?
+# 2. How are permissions managed in this EC2 instance you gave us? Got an error when using sudo mkdir
+# 3. What about the users? Got an error when I ran  `chown ubuntu:ubuntu` to the .ssh folder i created in the previous step but got this error: invalid user: ‘ubuntu:ubuntu’
 
