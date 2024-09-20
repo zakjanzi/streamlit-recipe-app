@@ -2,10 +2,11 @@
 app.py: A recipe app built with streamlit.
 """
 
+import os
 import streamlit as st
 from dotenv import load_dotenv
-import os
 import requests
+
 
 st.write(''' # Recipe App''')
 
@@ -19,17 +20,20 @@ api_key = os.getenv('API_KEY')
 if not api_key:
     st.error("API key not found")
 else:
-    api_endpoint = f"https://api.spoonacular.com/recipes/complexSearch?apiKey={api_key}"  # Include search query here
+    api_endpoint = (
+        f"https://api.spoonacular.com/recipes/complexSearch?apiKey={api_key}"
+      )
 
     headers = {
         "Content-Type": "application/json"
-    } 
+    }
 
 
-
-    if st.text_input('Search for a recipe', placeholder="Enter text"):  # Trigger search on text input
-        payload = {"query": st.session_state.get("search_query", "")}  # Use session state for query
-        response = requests.get(api_endpoint, params=payload, headers=headers)
+    # Trigger search on text input
+    if st.text_input('Search for a recipe', placeholder="Enter text"):
+         # Use session state for query
+        payload = {"query": st.session_state.get("search_query", "")}
+        response = requests.get(api_endpoint, params=payload, headers=headers, timeout=10)
 
         if response.status_code == 200:
             results = response.json()
