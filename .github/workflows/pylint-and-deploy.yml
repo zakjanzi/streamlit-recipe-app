@@ -51,7 +51,7 @@ jobs:
       run: |
         cd /opt
         git clone https://github.com/zakjanzi/streamlit-recipe-app.git
-        cd /opt/streamlit-recipe-app && python3 -m venv stramlit_env
+        cd /opt/streamlit-recipe-app && python3 -m venv streamlit_env
         source streamlit_env/bin/activate
         streamlit_env/pip install requirements
         streamlit_env/bin/streamlit run app.py
