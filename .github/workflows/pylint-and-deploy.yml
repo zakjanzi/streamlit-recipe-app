@@ -35,8 +35,10 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_IP }} << 'EOF'
           sudo rm -rf /home/ubuntu/streamlit-recipe-app
+          ls -lh
           git clone https://github.com/zakjanzi/streamlit-recipe-app.git
           cd streamlit-recipe-app
+          pwd
           python3 -m venv streamlit_env
           source streamlit_env/bin/activate
           pip install -r requirements.txt
