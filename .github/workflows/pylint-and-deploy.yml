@@ -42,7 +42,7 @@ jobs:
         
     - name: SSH into server and setup environment
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@EC2_IP
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_IP }}
         sudo apt update
         sudo apt upgrade
         sudo apt install python3
