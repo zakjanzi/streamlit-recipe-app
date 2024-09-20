@@ -52,9 +52,9 @@ jobs:
         cd /opt
         git clone https://github.com/zakjanzi/streamlit-recipe-app.git
         cd /opt/streamlit-recipe-app && python3 -m venv stramlit_env
-        source .venv/bin/activate
-        pip install requirements
-        streamlit run app.py
+        source streamlit_env/bin/activate
+        streamlit_env/pip install requirements
+        streamlit_env/bin/streamlit run app.py
 
       
 
