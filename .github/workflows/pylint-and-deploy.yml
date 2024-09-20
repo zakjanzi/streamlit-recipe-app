@@ -37,24 +37,22 @@ jobs:
         mkdir ~/.ssh
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-      # chown ubuntu:ubuntu ~/.ssh
-      # chown ubuntu:ubuntu ~/.ssh/id_rsa
         
     - name: SSH into server and setup environment
       run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_IP }}
-        sudo apt update
-        sudo apt upgrade
-        sudo apt install python3
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_IP }} << 'EOF'
+          sudo apt update
+          sudo apt upgrade -y
+          sudo apt install python3 python3-venv -y
+          cd /opt
+          git clone https://github.com/zakjanzi/streamlit-recipe-app.git
+          cd streamlit-recipe-app
+          python3 -m venv streamlit_env
+          source streamlit_env/bin/activate
+          pip install -r requirements.txt
+          nohup streamlit run app.py --server.port 80 --server.headless true
+        EOF
 
-    - name: Clone, setup env, and run.
-      run: |
-        cd /opt
-        git clone https://github.com/zakjanzi/streamlit-recipe-app.git
-        cd /opt/streamlit-recipe-app && python3 -m venv streamlit_env
-        source streamlit_env/bin/activate
-        streamlit_env/pip install requirements
-        streamlit_env/bin/streamlit run app.py
 
       
 
