@@ -41,7 +41,7 @@ jobs:
           cd /home/ubuntu
           sudo rm -rf /home/ubuntu/streamlit-recipe-app
           git clone https://github.com/zakjanzi/streamlit-recipe-app.git
-          cd ubuntu/streamlit-recipe-app
+          cd streamlit-recipe-app
           python3 -m venv streamlit_env
           source streamlit_env/bin/activate
           pip install -r requirements.txt
