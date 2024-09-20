@@ -37,9 +37,6 @@ jobs:
           sudo apt update
           sudo apt upgrade -y
           sudo apt install python3 python3-venv -y
-          sudo chmod 755 /home/ubuntu
-          cd /home/ubuntu
-          sudo rm -rf /home/ubuntu/streamlit-recipe-app
           git clone https://github.com/zakjanzi/streamlit-recipe-app.git
           cd streamlit-recipe-app
           python3 -m venv streamlit_env
@@ -56,4 +53,5 @@ jobs:
 # 2. How are permissions managed in this EC2 instance you gave us? Got an error when using sudo mkdir
 # 3. What about the users? Got an error when I ran  `chown ubuntu:ubuntu` to the .ssh folder i created in the previous step but got this error: invalid user: ‘ubuntu:ubuntu’
 # 4. If I installed a package in one of the deploys, then the deploy failed, will the package remain (or be cached) the next time I run the workflow?
+# 5. Is there a way to run a specific job (even if it depends on a previous one) without running the entire workflow?
 
