@@ -50,7 +50,7 @@ jobs:
           python3 -m venv streamlit_env
           source streamlit_env/bin/activate
           pip install -r requirements.txt
-          nohup streamlit run app.py --server.port 80 --server.headless true
+          nohup streamlit run ./app.py --server.port 80 --server.headless true
         EOF
 
 
