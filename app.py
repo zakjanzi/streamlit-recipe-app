@@ -1,3 +1,7 @@
+"""
+app.py: A recipe app built with streamlit.
+"""
+
 import streamlit as st
 from dotenv import load_dotenv
 import os
