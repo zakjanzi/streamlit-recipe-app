@@ -39,8 +39,9 @@ jobs:
           sudo apt install python3 python3-venv -y
           sudo chmod 755 /home/ubuntu
           cd /home/ubuntu
-          sudo git clone https://github.com/zakjanzi/streamlit-recipe-app.git
-          cd /home/ubuntu/streamlit-recipe-app
+          sudo rm -rf /home/ubuntu/streamlit-recipe-app
+          git clone https://github.com/zakjanzi/streamlit-recipe-app.git
+          cd ubuntu/streamlit-recipe-app
           python3 -m venv streamlit_env
           source streamlit_env/bin/activate
           pip install -r requirements.txt
