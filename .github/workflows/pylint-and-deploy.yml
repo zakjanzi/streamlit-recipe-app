@@ -34,8 +34,6 @@ jobs:
     - name: SSH into server and setup environment
       run: |
         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@${{ secrets.EC2_IP }} << 'EOF'
-          sudo apt update
-          sudo apt upgrade
           ls -lh
           git clone https://github.com/zakjanzi/streamlit-recipe-app.git
           cd streamlit-recipe-app
