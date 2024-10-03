@@ -1,6 +1,8 @@
 name: Pylint and Deploy to EC2
 
-on: [push]
+on: 
+  push:
+      branches: [main]
 
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
     
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # depends on the job named build
+    needs: [build]  # depends on the job named build
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -48,8 +50,6 @@ jobs:
       
 
 # Questions:
-# 1. Should I include the pip installation in the job or is it available by default in Github's CI server?
 # 2. How are permissions managed in this EC2 instance you gave us? Got an error when using sudo mkdir
 # 3. What about the users? Got an error when I ran  `chown ubuntu:ubuntu` to the .ssh folder i created in the previous step but got this error: invalid user: ‘ubuntu:ubuntu’
 # 4. If I installed a package in one of the deploys, then the deploy failed, will the package remain (or be cached) the next time I run the workflow?
-# 5. Is there a way to run a specific job (even if it depends on a previous one) without running the entire workflow?
